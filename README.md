@@ -103,3 +103,4 @@ Cette API permet de gérer le catalogue d’articles, les clients, les émetteur
 
 6. ** Tests unitaires et d’intégration**  
    - Couvrir tous les services et contrôleurs pour garantir la robustesse de l’API.# FacturationOkayo
+# FacturationOkayo
