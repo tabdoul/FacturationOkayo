@@ -1,0 +1,27 @@
+<h1>Bienvenue chez TMAD</h1>
+<button routerLink="">Accueil</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        <button (click)="toggleArticleMenu()">Gestion des Articles</button>
+        <div *ngIf="showArticleMenu" class="dropdown">
+          <button routerLink="/articles">Afficher tous les articles</button>
+          <button routerLink="/articles/supprimer">Supprimer un article</button>
+        </div>
+      </th>
+      <th>
+        <button (click)="toggleClientMenu()">Gestion des clients</button>
+        <div *ngIf="showClientMenu" class="dropdown">  <!-- ← déplacé dans le th -->
+          <button routerLink="/clients/ajouter">Ajouter un client</button>
+          <button routerLink="/clients">Afficher tous les clients</button>
+          <button routerLink="/clients/supprimer">Supprimer un client</button>
+        </div>
+      </th>
+      <th><button>Historique</button></th>
+    </tr>
+  </thead>
+</table>
+
+<router-outlet></router-outlet>

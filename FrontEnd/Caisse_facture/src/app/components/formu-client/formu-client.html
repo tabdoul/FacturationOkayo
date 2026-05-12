@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Ajouter un client</h2>
+
+  <p *ngIf="error" style="color: red;">{{ error }}</p>
+  <p *ngIf="success" style="color: green;">{{ success }}</p>
+
+  <form>
+    <div>
+      <label>Code client</label>
+      <input type="text" [(ngModel)]="client.code_client" name="code_client" required />
+    </div>
+    <div>
+      <label>Adresse</label>
+      <input type="text" [(ngModel)]="client.adresse_client" name="adresse_client" />
+    </div>
+    <div>
+      <label>Code postal</label>
+      <input type="text" [(ngModel)]="client.cp_client" name="cp_client" />
+    </div>
+    <div>
+      <label>Ville</label>
+      <input type="text" [(ngModel)]="client.ville_client" name="ville_client" />
+    </div>
+
+    <button (click)="submitForm()" [disabled]="loading">
+      {{ loading ? 'Enregistrement...' : 'Ajouter' }}
+    </button>
+  </form>
+</div>

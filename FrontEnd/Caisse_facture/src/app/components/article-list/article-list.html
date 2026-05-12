@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Liste des articles</h2>
+
+  <!-- Chargement -->
+  <p *ngIf="loading">Chargement...</p>
+
+  <!-- Erreur -->
+  <p *ngIf="error" style="color: red;">{{ error }}</p>
+
+  <!-- Tableau -->
+  <table *ngIf="!loading && articles.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Code Article</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>TVA</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles">
+        <td>{{ article.id_article }}</td>
+        <td>{{ article.code_article }}</td>
+        <td>{{ article.caracteristiques?.[0]?.nom }}</td>
+        <td>{{ article.description }}</td>
+        <td>{{ article.caracteristiques?.[0]?.prix }} €</td>
+        <td>{{ article.caracteristiques?.[0]?.tva }} %</td>
+        <td>
+          <button (click)="deleteArticle(article.id_article!)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Aucun article -->
+  <p *ngIf="!loading && articles.length === 0">Aucun article trouvé.</p>
+</div>

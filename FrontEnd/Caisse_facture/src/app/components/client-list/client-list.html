@@ -1,0 +1,29 @@
+<div class="container"><!-- Chargement -->
+  <p *ngIf="loading">Chargement...</p>
+
+  <!-- Erreur -->
+  <p *ngIf="error" style="color: red;">{{ error }}</p>
+
+  <!-- Tableau -->
+   <table>
+    <thead>
+      <tr>
+        <th>code</th>
+        <th>adresse</th>
+        <th>cpostal</th>
+        <th>ville</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.code_client }}</td>
+        <td>{{ client.adresse_client }}</td>
+        <td>{{ client.cp_client }}</td>
+        <td>{{ client.ville_client }}</td>
+        <td>
+          <button (click)="deleteClient(client.id_Client!)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+   </table></div>
