@@ -1,0 +1,36 @@
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
+
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './login.html',
+  styleUrl: './login.scss'
+})
+export class LoginComponent {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
+  username = '';
+  password = '';
+  error = '';
+  loading = false;
+
+  submit() {
+    this.loading = true;
+    this.authService.login(this.username, this.password).subscribe({
+      next: () => {
+        this.router.navigate(['/']);  // redirige vers l'accueil
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Identifiants incorrects';
+        this.loading = false;
+      }
+    });
+  }
+}
